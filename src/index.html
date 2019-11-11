@@ -1,12 +1,70 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>webpack starterkit</title>
+  <title>Caixa Eletrônico</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/5.0.0/normalize.min.css">
+  <link rel='stylesheet' href='https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.1.3/css/bootstrap.min.css'>
 </head>
+
 <body>
-  <h1>webpack starter</h1>
-  <p>✨ A lightweight foundation for your next webpack based frontend project.</p>
+  <section class="container">
+    <h2>Caixa Eletrônico</h2>
+    <form id="caixa-form">
+      <div class="row">
+        <div class="col-md-3">
+          <div class="form-group">
+            <label>Notas de 100</label>
+            <input class="form-control" id="notas100" type="text" name="notas100"
+              placeholder="Número de notas de 100" />
+          </div>
+        </div>
+        <div class="col-md-3">
+          <div class="form-group">
+            <label>Notas de 50</label>
+            <input class="form-control" id="notas50" type="text" name="notas50" placeholder="Número de notas de 50" />
+          </div>
+        </div>
+        <div class="col-md-3">
+          <div class="form-group">
+            <label>Notas de 20</label>
+            <input class="form-control" id="notas20" type="text" name="notas20" placeholder="Número de notas de 20" />
+          </div>
+        </div>
+        <div class="col-md-3">
+          <div class="form-group">
+            <label>Notas de 10</label>
+            <input class="form-control" id="notas10" type="text" name="notas10" placeholder="Número de notas de 10" />
+          </div>
+        </div>
+      </div>
+      <div class="row">
+          
+        <div class="col-md-6">
+          <div class="form-group">
+            <label for="">Valor em conta</label>
+            <input type="text" id="valorConta" class="form-control" name="valorConta" />
+          </div>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-md-6">
+          <div class="form-group">
+            <label for="">Valor do saque</label>
+            <input type="text" id="valorSaque" class="form-control" name="valorSaque" />
+          </div>
+        </div>
+      </div>
+      
+      <div class="row">
+        <div class="col-md-12">
+          <input type="submit" class="btn btn-primary" id="botaoSacar" value="Sacar" />
+        </div>
+      </div>
+      
+    </form>
+  </section>
 </body>
 </html>

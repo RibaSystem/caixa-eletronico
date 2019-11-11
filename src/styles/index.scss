@@ -1,6 +1,13 @@
-$body-color: slateblue;
+@import '~bootstrap';
 
-body {
-  color: $body-color;
-  font-family: sans-serif;
+.hidden {
+  display: none;
 }
+
+.show {
+  display: block;
+}
+body {
+  padding: 2em 0;
+}
+
