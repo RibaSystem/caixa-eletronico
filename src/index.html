@@ -12,7 +12,7 @@
 <body>
   <section class="container">
     <h2>Caixa Eletrônico</h2>
-    <form id="caixa-form">
+    <form id="valores-form">
       <div class="row">
         <div class="col-md-3">
           <div class="form-group">
@@ -40,8 +40,7 @@
           </div>
         </div>
       </div>
-      <div class="row">
-          
+      <div class="row" id="valorConta">  
         <div class="col-md-6">
           <div class="form-group">
             <label for="">Valor em conta</label>
@@ -49,6 +48,14 @@
           </div>
         </div>
       </div>
+      <div class="row">
+        <div class="col-md-12">
+          <input type="submit" class="btn btn-danger" id="botaoSubmeterValores" value="Confirmar" />
+        </div>
+      </div>
+      
+    </form>
+    <form id="saque-form" class="hidden">
       <div class="row">
         <div class="col-md-6">
           <div class="form-group">
@@ -63,7 +70,6 @@
           <input type="submit" class="btn btn-primary" id="botaoSacar" value="Sacar" />
         </div>
       </div>
-      
     </form>
   </section>
 </body>

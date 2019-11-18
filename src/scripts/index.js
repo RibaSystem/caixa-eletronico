@@ -1,35 +1,67 @@
 import Caixa from './Caixa';
+import Conta from './Conta';
 import '../styles/index.scss';
+
+const caixa = new Caixa();
+const conta = new Conta();
 
 /**
  * Quando a paginar carregar...
  */
 document.addEventListener("DOMContentLoaded", () => {
-    //pegar formulario do DOM
-    const form = document.getElementById("caixa-form");
-    
-    //adicionar evento ao submeter o formulario
-    form.addEventListener('submit', onSaqueFormSubmit);
-  });
-  //função que recupera os valores digitados e chama o metodo calcularNotas da classe Caixa
-  const onSaqueFormSubmit = (e) => {
-    e.preventDefault();
-    const form = e.target;
-    const valorSaque = form.valorSaque.value;
-    const notas100 = form.notas100.value;
-    const notas50 = form.notas50.value;
-    const notas20 = form.notas20.value;
-    const notas10 = form.notas10.value;
+  //pegar formulario de valores do DOM
+  const formValores = document.getElementById("valores-form");
+  //pegar formulario de saque do DOM
+  const formSaque = document.getElementById("saque-form");
+  //adicionar evento ao submeter o formulario de valores
+  formValores.addEventListener('submit', onValoresSubmit);
+  //adicionar evento ao submeter o formulario de saque
+  formSaque.addEventListener('submit', onSaqueFormSubmit);
 
-    const caixa = new Caixa();
-    if (valorSaque % 10 != 0) {
-      alert("Valor Indisponivel!");
-    } else if ((valorSaque) > ((notas100 * 100) + (notas50 * 50) + (notas20 * 20) + (notas10 * 10))) {
-      alert("Valor de saque maior que quantidade em caixa!");
-    } else {
-    caixa.calcularNotas(valorSaque,notas100, notas50, notas20, notas10);
-       
-   }
-  };
+});
+
+//função que recupera os valores digitados e chama o metodo calcularNotas da classe Caixa
+const onValoresSubmit = (e) => {
+  e.preventDefault();
+  const formValores = e.target;
+  const valorConta = formValores.valorConta.value;
+
+  if(valorConta == 0 || valorConta == null){
+    alert("Digite a seu saldo!");
+    return;
+  }else{
+    caixa.notas100 = formValores.notas100.value;
+    caixa.notas50 = formValores.notas50.value;
+    caixa.notas20 = formValores.notas50.value;
+    caixa.notas10 = formValores.notas10.value;
+    conta.saldo = valorConta;
+    const form = document.getElementById("valores-form");
+    form.classList.add('hidden');
+    const formSaque = document.getElementById("saque-form");
+    formSaque.classList.remove('hidden');
+  }
+};
+
+const onSaqueFormSubmit = (e) => {
+  e.preventDefault();
+  debugger;
+
+  const formSaque = e.target;
+  const valorSaque = formSaque.valorSaque.value;
+
+  if (valorSaque % 10 != 0) {
+    alert("Valor Indisponivel!");
+  } else if ((valorSaque) > ((caixa.notas100 * 100) + (caixa.notas50 * 50) + (caixa.notas20 * 20) + (caixa.notas10 * 10))) {
+    alert("Valor de saque maior que quantidade em caixa!");
+  } else if (conta.saldo < valorSaque) {
+    alert("Saldo insuficiente!");
+  } else {
+    conta.sacar(conta.saldo, valorSaque);
+    caixa.calcularNotas(valorSaque, caixa.notas100, caixa.notas50, caixa.notas20, caixa.notas10);
+  }
+
+};
+
+    // valorConta = document.getElementById("valorConta").style.display = 'none';
 
   // divValor = document.getElementById("divValorSaque").style.display = 'block';

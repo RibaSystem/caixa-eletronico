@@ -4,11 +4,12 @@ export default class Conta {
         this.saldo = saldo;
     }
 
-    sacar(valorSaque, saldo){
-        if(valorSaque>saldo){
-            alert("Saldo insuficiente para saque!");
-        }else{
-            saldo = saldo - valorSaque;
-        }
+    sacar(saldo, valorSaque){
+        this.saldo = saldo - valorSaque;
+
+        alert("Saque efetuado com sucesso!" + "\nSaldo atual em conta: " + this.saldo);
+
+        
     }
+
 }
