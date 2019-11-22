@@ -26,10 +26,10 @@ const onValoresSubmit = (e) => {
   const formValores = e.target;
   const valorConta = formValores.valorConta.value;
 
-  if(valorConta == 0 || valorConta == null){
+  if (valorConta == 0 || valorConta == null) {
     alert("Digite a seu saldo!");
     return;
-  }else{
+  } else {
     caixa.notas100 = formValores.notas100.value;
     caixa.notas50 = formValores.notas50.value;
     caixa.notas20 = formValores.notas50.value;
@@ -42,16 +42,24 @@ const onValoresSubmit = (e) => {
   }
 };
 
+const calcularNotasEmCaixa = (notas100, notas50, notas20, notas10) => {
+
+  const n100 = notas100 * 100;
+  const n50 = notas50 * 50;
+  const n20 = notas20 * 20;
+  const n10 = notas10 * 10;
+  return n100 + n50 + n20 + n10;
+};
+
 const onSaqueFormSubmit = (e) => {
   e.preventDefault();
-  debugger;
-
   const formSaque = e.target;
   const valorSaque = formSaque.valorSaque.value;
+  const qtd = calcularNotasEmCaixa(caixa.notas100, caixa.notas50, caixa.notas20, caixa.notas10);
 
   if (valorSaque % 10 != 0) {
     alert("Valor Indisponivel!");
-  } else if ((valorSaque) > ((caixa.notas100 * 100) + (caixa.notas50 * 50) + (caixa.notas20 * 20) + (caixa.notas10 * 10))) {
+  } else if ((valorSaque) > (qtd) || ((conta.saldo) > (qtd) && (valorSaque) > (qtd))) {
     alert("Valor de saque maior que quantidade em caixa!");
   } else if (conta.saldo < valorSaque) {
     alert("Saldo insuficiente!");
